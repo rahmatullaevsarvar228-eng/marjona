@@ -1,429 +1,879 @@
 <!DOCTYPE html>
 <html lang="uz-Latn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Marjona uchun 🌸</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,600;6..12,700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --cream:#FBF3E6;
-    --paper:#FFFBF4;
-    --blush:#F2D7C9;
-    --terracotta:#C97B5B;
-    --terracotta-deep:#B5623F;
-    --gold:#D9A94E;
-    --plum:#4A3138;
-    --plum-soft:#7A5C60;
-    --sage:#9CAE8C;
-    --shadow:rgba(74,49,56,0.14);
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Marjona uchun 🌸</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,600;6..12,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FBF3E6;
+            --paper: #FFFBF4;
+            --blush: #F2D7C9;
+            --terracotta: #C97B5B;
+            --terracotta-deep: #B5623F;
+            --gold: #D9A94E;
+            --plum: #4A3138;
+            --plum-soft: #7A5C60;
+            --sage: #9CAE8C;
+            --shadow: rgba(74, 49, 56, 0.14);
+        }
 
-  *{ box-sizing:border-box; margin:0; padding:0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-  html,body{
-    height:100%;
-    background:var(--cream);
-    font-family:'Nunito Sans', sans-serif;
-    color:var(--plum);
-    overflow:hidden;
-  }
+        html,
+        body {
+            height: 100%;
+            background: var(--cream);
+            font-family: 'Nunito Sans', sans-serif;
+            color: var(--plum);
+            overflow: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-  body{
-    background:
-      radial-gradient(circle at 15% 10%, rgba(217,169,78,0.16), transparent 45%),
-      radial-gradient(circle at 85% 85%, rgba(201,123,91,0.14), transparent 50%),
-      var(--cream);
-  }
+        body {
+            background:
+                radial-gradient(circle at 15% 10%, rgba(217, 169, 78, 0.16), transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(201, 123, 91, 0.14), transparent 50%),
+                var(--cream);
+        }
 
-  /* subtle plaster/fresco grain texture */
-  .grain{
-    position:fixed; inset:0; pointer-events:none; z-index:5;
-    opacity:0.05; mix-blend-mode:multiply;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  }
+        .grain {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 5;
+            opacity: 0.05;
+            mix-blend-mode: multiply;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+        }
 
-  /* floating sunbeam dust particles */
-  .particle{
-    position:fixed;
-    border-radius:50%;
-    background:radial-gradient(circle, rgba(217,169,78,0.55), rgba(217,169,78,0));
-    pointer-events:none;
-    z-index:4;
-    animation:drift linear infinite;
-  }
-  @keyframes drift{
-    0%{ transform:translateY(0) translateX(0); opacity:0; }
-    10%{ opacity:0.8; }
-    90%{ opacity:0.5; }
-    100%{ transform:translateY(-110vh) translateX(20px); opacity:0; }
-  }
+        .particle {
+            position: fixed;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(217, 169, 78, 0.55), rgba(217, 169, 78, 0));
+            pointer-events: none;
+            z-index: 4;
+            animation: drift linear infinite;
+        }
 
-  .scene{
-    position:fixed; inset:0;
-    display:flex; align-items:center; justify-content:center;
-    padding:6vh 6vw;
-    opacity:0; visibility:hidden;
-    transform:scale(1.02);
-    transition:opacity 1.1s ease, transform 1.1s ease, visibility 1.1s;
-    z-index:2;
-  }
-  .scene.active{
-    opacity:1; visibility:visible; transform:scale(1);
-    z-index:10;
-  }
+        @keyframes drift {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-110vh) translateX(20px);
+                opacity: 0;
+            }
+        }
 
-  .scene-inner{
-    max-width:920px; width:100%;
-    display:flex; align-items:center; gap:60px;
-    justify-content:center;
-  }
+        .scene {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4vh 4vw;
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(1.02);
+            transition: opacity 1.1s ease, transform 1.1s ease, visibility 1.1s;
+            z-index: 2;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
 
-  /* ---------- Welcome ---------- */
-  #scene-welcome .scene-inner{ flex-direction:column; text-align:center; gap:28px; }
+        .scene.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+            z-index: 10;
+        }
 
-  .eyebrow{
-    letter-spacing:0.22em; text-transform:uppercase;
-    font-size:13px; color:var(--terracotta-deep); font-weight:700;
-  }
+        .scene-inner {
+            max-width: 920px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            justify-content: center;
+        }
 
-  h1.title{
-    font-family:'Fraunces', serif;
-    font-weight:500;
-    font-size:clamp(2.6rem, 6vw, 4.2rem);
-    color:var(--plum);
-    line-height:1.05;
-  }
-  h1.title em{ font-style:italic; color:var(--terracotta); font-weight:500; }
+        /* ---------- Welcome ---------- */
+        #scene-welcome .scene-inner {
+            flex-direction: column;
+            text-align: center;
+            gap: 22px;
+        }
 
-  p.lede{
-    font-size:19px; line-height:1.7; color:var(--plum-soft);
-    max-width:520px; font-weight:500;
-  }
+        .eyebrow {
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            font-size: 12px;
+            color: var(--terracotta-deep);
+            font-weight: 700;
+        }
 
-  .cat-wander{
-    font-size:44px;
-    animation:sway 3.4s ease-in-out infinite;
-    filter:drop-shadow(0 8px 14px var(--shadow));
-  }
-  @keyframes sway{
-    0%,100%{ transform:translateY(0) rotate(-3deg); }
-    50%{ transform:translateY(-10px) rotate(3deg); }
-  }
+        h1.title {
+            font-family: 'Fraunces', serif;
+            font-weight: 500;
+            font-size: clamp(2.4rem, 7vw, 4.2rem);
+            color: var(--plum);
+            line-height: 1.05;
+        }
+        h1.title em {
+            font-style: italic;
+            color: var(--terracotta);
+            font-weight: 500;
+        }
 
-  button.open-btn{
-    margin-top:6px;
-    font-family:'Nunito Sans', sans-serif;
-    font-weight:700; font-size:17px;
-    color:var(--paper);
-    background:linear-gradient(135deg, var(--terracotta), var(--terracotta-deep));
-    border:none; border-radius:999px;
-    padding:17px 42px;
-    cursor:pointer;
-    box-shadow:0 14px 30px -10px rgba(181,98,63,0.55);
-    transition:transform 0.35s ease, box-shadow 0.35s ease;
-    letter-spacing:0.02em;
-  }
-  button.open-btn:hover{ transform:translateY(-3px); box-shadow:0 20px 36px -10px rgba(181,98,63,0.6); }
-  button.open-btn:active{ transform:translateY(0); }
+        p.lede {
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--plum-soft);
+            max-width: 520px;
+            font-weight: 500;
+        }
 
-  /* ---------- Story scenes ---------- */
-  .frame-wrap{
-    position:relative;
-    flex:0 0 auto;
-    position:sticky;
-    top:8vh;
-  }
-  .frame{
-    width:340px; height:420px;
-    border-radius:14px 130px 14px 14px / 14px 60px 14px 14px;
-    overflow:hidden;
-    box-shadow:
-      0 2px 0 4px var(--paper),
-      0 2px 0 8px var(--blush),
-      0 30px 60px -20px var(--shadow);
-    position:relative;
-    background:var(--blush);
-  }
-  .frame img{
-    width:100%; height:100%; object-fit:cover;
-    display:block;
-    transform:scale(1.02);
-  }
-  .frame::after{
-    content:"";
-    position:absolute; inset:0;
-    box-shadow:inset 0 0 40px rgba(74,49,56,0.18);
-    border-radius:inherit;
-  }
-  .frame-glow{
-    position:absolute; inset:-18px;
-    border-radius:26px 140px 26px 26px / 26px 70px 26px 26px;
-    background:radial-gradient(circle at 30% 20%, rgba(217,169,78,0.35), transparent 60%);
-    z-index:-1;
-    filter:blur(6px);
-  }
+        .cat-wander {
+            font-size: 40px;
+            animation: sway 3.4s ease-in-out infinite;
+            filter: drop-shadow(0 8px 14px var(--shadow));
+        }
 
-  .story-text{
-    flex:1 1 380px;
-    display:flex; flex-direction:column; gap:18px;
-    max-height:80vh;
-    overflow-y:auto;
-    padding-right:14px;
-    scrollbar-width:thin;
-    scrollbar-color:var(--terracotta) transparent;
-  }
-  .story-text::-webkit-scrollbar{ width:6px; }
-  .story-text::-webkit-scrollbar-thumb{ background:var(--blush); border-radius:6px; }
-  .story-text::-webkit-scrollbar-thumb:hover{ background:var(--terracotta); }
+        @keyframes sway {
+            0%,
+            100% {
+                transform: translateY(0) rotate(-3deg);
+            }
+            50% {
+                transform: translateY(-10px) rotate(3deg);
+            }
+        }
 
-  .story-text .eyebrow{ font-size:12px; }
+        button.open-btn {
+            margin-top: 4px;
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight: 700;
+            font-size: 17px;
+            color: var(--paper);
+            background: linear-gradient(135deg, var(--terracotta), var(--terracotta-deep));
+            border: none;
+            border-radius: 999px;
+            padding: 17px 42px;
+            cursor: pointer;
+            box-shadow: 0 14px 30px -10px rgba(181, 98, 63, 0.55);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            letter-spacing: 0.02em;
+            touch-action: manipulation;
+            min-height: 56px;
+        }
 
-  .story-text h2{
-    font-family:'Fraunces', serif;
-    font-weight:500;
-    font-style:italic;
-    font-size:clamp(1.7rem, 3vw, 2.3rem);
-    color:var(--plum);
-  }
+        button.open-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 36px -10px rgba(181, 98, 63, 0.6);
+        }
+        button.open-btn:active {
+            transform: translateY(0);
+        }
 
-  .story-text p{
-    font-size:17.5px;
-    line-height:1.85;
-    color:var(--plum-soft);
-    font-weight:500;
-  }
-  .story-text p + p{ margin-top:2px; }
+        /* ---------- Story scenes ---------- */
+        .frame-wrap {
+            position: relative;
+            flex: 0 0 auto;
+            width: 100%;
+            max-width: 340px;
+            margin: 0 auto;
+        }
 
-  .story-text .drop{
-    font-family:'Fraunces', serif;
-    font-size:1.35em;
-    color:var(--terracotta-deep);
-    font-weight:600;
-  }
+        .frame {
+            width: 100%;
+            aspect-ratio: 340 / 420;
+            border-radius: 14px 130px 14px 14px / 14px 60px 14px 14px;
+            overflow: hidden;
+            box-shadow:
+                0 2px 0 4px var(--paper),
+                0 2px 0 8px var(--blush),
+                0 30px 60px -20px var(--shadow);
+            position: relative;
+            background: var(--blush);
+        }
 
-  /* ---------- Final scene ---------- */
-  #scene-final .scene-inner{ flex-direction:column; text-align:center; gap:24px; }
-  .hearts{ font-size:30px; letter-spacing:14px; }
-  .signature{
-    font-family:'Fraunces', serif; font-style:italic;
-    font-size:22px; color:var(--terracotta-deep); margin-top:6px;
-  }
+        .frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transform: scale(1.02);
+        }
 
-  .replay-btn{
-    margin-top:10px;
-    font-family:'Nunito Sans', sans-serif;
-    font-weight:700; font-size:15px;
-    color:var(--terracotta-deep);
-    background:transparent;
-    border:2px solid var(--terracotta);
-    border-radius:999px;
-    padding:12px 28px;
-    cursor:pointer;
-    transition:all 0.3s ease;
-  }
-  .replay-btn:hover{ background:var(--terracotta); color:var(--paper); }
+        .frame::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            box-shadow: inset 0 0 40px rgba(74, 49, 56, 0.18);
+            border-radius: inherit;
+        }
 
-  /* ---------- Nav ---------- */
-  .dots{
-    position:fixed; bottom:34px; left:50%; transform:translateX(-50%);
-    display:flex; gap:12px; z-index:20;
-    opacity:0; transition:opacity 0.6s ease;
-    pointer-events:none;
-  }
-  .dots.show{ opacity:1; pointer-events:auto; }
-  .dot{
-    width:9px; height:9px; border-radius:50%;
-    background:var(--blush);
-    cursor:pointer; transition:all 0.3s ease;
-  }
-  .dot.on{ background:var(--terracotta); transform:scale(1.3); }
+        .frame-glow {
+            position: absolute;
+            inset: -18px;
+            border-radius: 26px 140px 26px 26px / 26px 70px 26px 26px;
+            background: radial-gradient(circle at 30% 20%, rgba(217, 169, 78, 0.35), transparent 60%);
+            z-index: -1;
+            filter: blur(6px);
+        }
 
-  .nav-arrow{
-    position:fixed; top:50%; transform:translateY(-50%);
-    width:52px; height:52px; border-radius:50%;
-    border:none; background:var(--paper);
-    box-shadow:0 10px 26px -8px var(--shadow);
-    color:var(--terracotta-deep); font-size:20px;
-    cursor:pointer; z-index:20;
-    display:flex; align-items:center; justify-content:center;
-    opacity:0; visibility:hidden; transition:opacity 0.5s ease, transform 0.3s ease;
-  }
-  .nav-arrow.show{ opacity:1; visibility:visible; }
-  .nav-arrow:hover{ transform:translateY(-50%) scale(1.08); }
-  .nav-arrow.prev{ left:26px; }
-  .nav-arrow.next{ right:26px; }
+        .story-text {
+            flex: 1 1 380px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-height: 70vh;
+            overflow-y: auto;
+            padding-right: 10px;
+            padding-bottom: 12px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--terracotta) transparent;
+            -webkit-overflow-scrolling: touch;
+        }
 
-  .paw{
-    position:absolute; font-size:16px; opacity:0.35; color:var(--terracotta);
-  }
+        .story-text::-webkit-scrollbar {
+            width: 5px;
+        }
+        .story-text::-webkit-scrollbar-thumb {
+            background: var(--blush);
+            border-radius: 6px;
+        }
+        .story-text::-webkit-scrollbar-thumb:hover {
+            background: var(--terracotta);
+        }
 
-  @media (max-width:820px){
-    .scene-inner{ flex-direction:column !important; gap:30px; text-align:center; }
-    .frame{ width:78vw; max-width:320px; height:min(56vh,380px); }
-    .story-text{ align-items:center; }
-    .nav-arrow{ width:42px; height:42px; font-size:16px; }
-    .nav-arrow.prev{ left:10px; } .nav-arrow.next{ right:10px; }
-  }
-</style>
+        .story-text .eyebrow {
+            font-size: 11px;
+        }
+
+        .story-text h2 {
+            font-family: 'Fraunces', serif;
+            font-weight: 500;
+            font-style: italic;
+            font-size: clamp(1.5rem, 3.2vw, 2.3rem);
+            color: var(--plum);
+            line-height: 1.2;
+        }
+
+        .story-text p {
+            font-size: 17px;
+            line-height: 1.85;
+            color: var(--plum-soft);
+            font-weight: 500;
+        }
+
+        .story-text p+p {
+            margin-top: 2px;
+        }
+
+        .story-text .drop {
+            font-family: 'Fraunces', serif;
+            font-size: 1.35em;
+            color: var(--terracotta-deep);
+            font-weight: 600;
+        }
+
+        /* ---------- Final scene ---------- */
+        #scene-final .scene-inner {
+            flex-direction: column;
+            text-align: center;
+            gap: 20px;
+        }
+        .hearts {
+            font-size: 28px;
+            letter-spacing: 12px;
+        }
+        .signature {
+            font-family: 'Fraunces', serif;
+            font-style: italic;
+            font-size: 20px;
+            color: var(--terracotta-deep);
+            margin-top: 4px;
+        }
+
+        .replay-btn {
+            margin-top: 8px;
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--terracotta-deep);
+            background: transparent;
+            border: 2px solid var(--terracotta);
+            border-radius: 999px;
+            padding: 14px 32px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            touch-action: manipulation;
+            min-height: 50px;
+        }
+
+        .replay-btn:hover {
+            background: var(--terracotta);
+            color: var(--paper);
+        }
+
+        /* ---------- Nav ---------- */
+        .dots {
+            position: fixed;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 14px;
+            z-index: 20;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            pointer-events: none;
+            padding: 8px 12px;
+            background: rgba(255, 251, 244, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 30px;
+            box-shadow: 0 4px 16px rgba(74, 49, 56, 0.08);
+        }
+
+        .dots.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--blush);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            touch-action: manipulation;
+            flex-shrink: 0;
+        }
+
+        .dot.on {
+            background: var(--terracotta);
+            transform: scale(1.3);
+        }
+
+        .nav-arrow {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: none;
+            background: var(--paper);
+            box-shadow: 0 10px 26px -8px var(--shadow);
+            color: var(--terracotta-deep);
+            font-size: 18px;
+            cursor: pointer;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, transform 0.3s ease;
+            touch-action: manipulation;
+        }
+
+        .nav-arrow.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .nav-arrow:hover {
+            transform: translateY(-50%) scale(1.08);
+        }
+
+        .nav-arrow.prev {
+            left: 14px;
+        }
+        .nav-arrow.next {
+            right: 14px;
+        }
+
+        .paw {
+            position: absolute;
+            font-size: 16px;
+            opacity: 0.35;
+            color: var(--terracotta);
+        }
+
+        /* ===== MOBILE FIRST ===== */
+        @media (max-width: 820px) {
+            .scene-inner {
+                flex-direction: column !important;
+                gap: 24px;
+                text-align: center;
+                padding: 0 2px;
+            }
+
+            .frame-wrap {
+                max-width: 280px;
+                width: 70vw;
+            }
+
+            .frame {
+                aspect-ratio: 340 / 420;
+                border-radius: 12px 100px 12px 12px / 12px 50px 12px 12px;
+            }
+
+            .story-text {
+                max-height: 58vh;
+                padding-right: 6px;
+                padding-left: 6px;
+                gap: 14px;
+                text-align: left;
+                width: 100%;
+            }
+
+            .story-text p {
+                font-size: 16px;
+                line-height: 1.8;
+            }
+
+            .story-text h2 {
+                font-size: clamp(1.3rem, 3.6vw, 1.7rem);
+                text-align: left;
+            }
+
+            .story-text .eyebrow {
+                text-align: left;
+                font-size: 10px;
+            }
+
+            .nav-arrow {
+                width: 42px;
+                height: 42px;
+                font-size: 15px;
+            }
+
+            .nav-arrow.prev {
+                left: 8px;
+            }
+            .nav-arrow.next {
+                right: 8px;
+            }
+
+            .dots {
+                gap: 12px;
+                padding: 6px 12px;
+                bottom: 20px;
+            }
+
+            .dot {
+                width: 11px;
+                height: 11px;
+            }
+
+            #scene-welcome .scene-inner {
+                gap: 18px;
+                padding: 0 4px;
+            }
+
+            h1.title {
+                font-size: clamp(2rem, 8vw, 3rem);
+            }
+
+            p.lede {
+                font-size: 16px;
+                line-height: 1.6;
+                padding: 0 4px;
+            }
+
+            .cat-wander {
+                font-size: 36px;
+            }
+
+            button.open-btn {
+                padding: 15px 34px;
+                font-size: 16px;
+                min-height: 52px;
+                width: 90%;
+                max-width: 320px;
+            }
+
+            .hearts {
+                font-size: 24px;
+                letter-spacing: 10px;
+            }
+
+            .replay-btn {
+                padding: 12px 28px;
+                font-size: 14px;
+                min-height: 46px;
+                width: 80%;
+                max-width: 280px;
+            }
+
+            .frame-glow {
+                inset: -12px;
+                border-radius: 20px 120px 20px 20px / 20px 60px 20px 20px;
+            }
+
+            #scene-final .scene-inner {
+                gap: 16px;
+            }
+            #scene-final h1.title {
+                font-size: clamp(1.6rem, 6vw, 2.4rem);
+            }
+        }
+
+        /* Small phones */
+        @media (max-width: 420px) {
+            .scene {
+                padding: 2vh 3vw;
+            }
+
+            .frame-wrap {
+                max-width: 220px;
+                width: 72vw;
+            }
+
+            .story-text {
+                max-height: 52vh;
+                padding: 0 4px;
+            }
+
+            .story-text p {
+                font-size: 15px;
+                line-height: 1.75;
+            }
+
+            .story-text h2 {
+                font-size: clamp(1.1rem, 3.4vw, 1.4rem);
+            }
+
+            .nav-arrow {
+                width: 36px;
+                height: 36px;
+                font-size: 13px;
+            }
+
+            .nav-arrow.prev {
+                left: 4px;
+            }
+            .nav-arrow.next {
+                right: 4px;
+            }
+
+            .dots {
+                gap: 10px;
+                padding: 5px 10px;
+                bottom: 14px;
+            }
+
+            .dot {
+                width: 10px;
+                height: 10px;
+            }
+
+            button.open-btn {
+                padding: 13px 28px;
+                font-size: 15px;
+                min-height: 48px;
+                width: 95%;
+            }
+
+            h1.title {
+                font-size: clamp(1.6rem, 7vw, 2.4rem);
+            }
+
+            p.lede {
+                font-size: 14.5px;
+            }
+
+            .cat-wander {
+                font-size: 32px;
+            }
+
+            .hearts {
+                font-size: 20px;
+                letter-spacing: 8px;
+            }
+
+            .replay-btn {
+                padding: 10px 22px;
+                font-size: 13px;
+                min-height: 42px;
+                width: 85%;
+            }
+
+            .frame-glow {
+                inset: -8px;
+                border-radius: 16px 80px 16px 16px / 16px 40px 16px 16px;
+            }
+        }
+
+        /* Landscape phones */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .scene {
+                padding: 1.5vh 3vw;
+            }
+
+            .frame-wrap {
+                max-width: 160px;
+                width: 35vw;
+            }
+
+            .story-text {
+                max-height: 70vh;
+                padding-right: 8px;
+            }
+
+            .story-text p {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+
+            .story-text h2 {
+                font-size: clamp(1rem, 2.8vw, 1.3rem);
+            }
+
+            .nav-arrow {
+                width: 32px;
+                height: 32px;
+                font-size: 12px;
+            }
+
+            .dots {
+                bottom: 10px;
+                gap: 8px;
+                padding: 4px 10px;
+            }
+
+            .dot {
+                width: 8px;
+                height: 8px;
+            }
+
+            #scene-welcome .scene-inner {
+                gap: 12px;
+            }
+            #scene-welcome h1.title {
+                font-size: clamp(1.4rem, 5vw, 2rem);
+            }
+            p.lede {
+                font-size: 13px;
+            }
+            .cat-wander {
+                font-size: 28px;
+            }
+            button.open-btn {
+                padding: 10px 24px;
+                font-size: 14px;
+                min-height: 40px;
+            }
+        }
+
+        /* Large screens */
+        @media (min-width: 1000px) {
+            .frame-wrap {
+                max-width: 380px;
+            }
+
+            .story-text {
+                max-height: 78vh;
+            }
+
+            .story-text p {
+                font-size: 18px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<div class="grain"></div>
-<audio id="bgMusic" loop preload="auto">
-  <source src="music.mp3" type="audio/mpeg">
-  <source src="music.ogg" type="audio/ogg">
-</audio>
+    <div class="grain"></div>
+    <audio id="bgMusic" loop preload="auto">
+        <source src="music.mp3" type="audio/mpeg">
+        <source src="music.ogg" type="audio/ogg">
+    </audio>
 
-<!-- SCENE 0 - Welcome -->
-<section class="scene active" id="scene-welcome">
-  <div class="scene-inner">
-    <span class="eyebrow">kichkina sovgʻa</span>
-    <h1 class="title">Sen uchun,<br><em>Marjona</em></h1>
-    <p class="lede">Bu yerda - issiq bir oqshom, hamma narsani soʻzsiz tushunadigan mushukcha va oddiy kunni bayramga aylantira oladigan qiz bor. Ochish uchun bosing.</p>
-    <div class="cat-wander">🐾🐈</div>
-    <button class="open-btn" id="openBtn">Hikoyani ochish</button>
-  </div>
-</section>
+    <!-- SCENE 0 - Welcome -->
+    <section class="scene active" id="scene-welcome">
+        <div class="scene-inner">
+            <span class="eyebrow">kichkina sovgʻa</span>
+            <h1 class="title">Sen uchun,<br><em>Marjona</em></h1>
+            <p class="lede">Bu yerda - issiq bir oqshom, hamma narsani soʻzsiz tushunadigan mushukcha va oddiy kunni bayramga aylantira oladigan qiz bor. Ochish uchun bosing.</p>
+            <div class="cat-wander">🐾🐈</div>
+            <button class="open-btn" id="openBtn">Hikoyani ochish</button>
+        </div>
+    </section>
 
-<!-- SCENE 1 -->
-<section class="scene" id="scene-one">
-  <div class="scene-inner">
-    <div class="frame-wrap">
-      <div class="frame-glow"></div>
-      <div class="frame"><img src="1.png" alt="Marjona mushuk bilan"></div>
+    <!-- SCENE 1 -->
+    <section class="scene" id="scene-one">
+        <div class="scene-inner">
+            <div class="frame-wrap">
+                <div class="frame-glow"></div>
+                <div class="frame"><img src="1.png" alt="Marjona mushuk bilan"></div>
+            </div>
+            <div class="story-text">
+                <span class="eyebrow">birinchi bob · sokin oqshom</span>
+                <h2>Sen bilan birga oʻylaydigan yorugʻlik</h2>
+                <p><span class="drop">M</span>arjona sokin qiz. Bu haqiqat. Lekin sokinlik - boʻshliq degani emas. Uning sukunati ortida butun bir olam yashiringan: chuqur fikrlar, nozik tuygʻular, hech kimga koʻrsatilmaydigan mehr. Koʻpchilik shovqin bilan diqqatni oʻziga tortadi, Marjona esa - aksincha. U jim turadi, lekin uning jimligida shunday chuqurlik borki, uni sezgan odam bir umr esidan chiqarolmaydi.</p>
+                <p>Mana shu oqshom ham xuddi shunday edi. Deraza ortida kun soʻnib borardi, xona esa faqat oqshomga xos boʻlgan ajib qumral yorugʻlikka toʻlgan edi - issiq, erinchoq va bir oz sehrli. Marjona oyoqlarini tortib oʻtirgancha, tizzasida mudragan mushukni sekin siypalardi. Mushuk shu qadar ishonch bilan xurillardiki, goʻyo aniq bilardi: hozir unga aynan shu narsa kerak - hech kim gapirmasin, hech kim shoshiltirmasin, faqat shu jimlik, shu iliqlik.</p>
+                <p>Marjona koʻp gapirmaydi. Lekin har bir soʻzi - oʻylab aytilgan, har bir jimligi - mazmunga toʻla. Odamlar buni sezishadi: uning yonida bemalol boʻlish mumkin, chunki u hech qachon ortiqcha baholamaydi, hech qachon shoshiltirmaydi. U shunchaki tinglaydi, tushunadi, va oʻz vaqtida - juda kam, ammo juda toʻgʻri soʻzlar aytadi.</p>
+                <p>U turli narsalar haqida oʻylardi. Juda tez oʻtib ketgan kunlar haqida. Endigina ushalayotgan orzular haqida. Sevgan odamlari haqida - ularning har biri uning yuragida alohida burchakka ega. U hech kimga bu haqda baland ovozda gapirmaydi, lekin har bir kishi haqida qanchalar chuqur oʻylashini faqat u oʻzi biladi.</p>
+                <p>Va shu fikrlar orasida sekin-asta bir xotirjamlik keldi: hammasi toʻgʻri ketyapti. Hozir hamma narsa aniq boʻlmasa ham - hayot baribir goʻzal bir surat chizmoqda, faqat uni hali toʻliq koʻrsatmagan, xolos. Sokin odamlar koʻpincha eng chuqur ishonchga ega boʻlishadi - ular shov-shuvsiz, lekin mustahkam ishonishadi: yaxshilik albatta keladi.</p>
+                <p>Mushuk bir koʻzini ochib, unga oʻsha mushukona donolik bilan qaradi - goʻyo shunday dedi: <em>«Jilmayib qoʻy. Sen oʻzing oʻylagandan ham yaxshi uddalayapsan»</em>. Va aynan shu daqiqada sodir boʻldi - sekin, tabiiy, hech kim uni bunga majburlamagan holda: Marjonaning lablarida tabassum paydo boʻldi.</p>
+                <p>Bu shunchaki tabassum emas edi. Buni koʻrgan har bir kishi biladi - Marjonaning tabassumi kamdan-kam, ammo juda chin. U kulganda, koʻzlari ham kulib turadi, va butun xona birdan yorishib ketadi, goʻyo quyosh xiralashgan oqshomni yana bir bor yoritib yuborganday. Odamlar bu tabassumni koʻrish uchun kutishga arziydi, deyishadi - chunki u tez-tez namoyon boʻlmaydi, lekin paydo boʻlganda hammasini unutdirib qoʻyadi.</p>
+                <p>Va shu oqshom ham - sokin, iliq, mushuk bilan toʻla - Marjonaning yuzida oʻsha noyob, haqiqiy tabassumni yana bir bor uygʻotdi. Chunki ba'zan baxt uchun katta voqealar shart emas. Faqat sevimli mushuk, mayin yorugʻlik va oʻz-oʻzi bilan tinch qolish kifoya.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCENE 2 -->
+    <section class="scene" id="scene-two">
+        <div class="scene-inner">
+            <div class="frame-wrap">
+                <div class="frame-glow"></div>
+                <div class="frame"><img src="2.png" alt="Marjona, Fotima va mushuk oʻynashmoqda"></div>
+            </div>
+            <div class="story-text">
+                <span class="eyebrow">ikkinchi bob · shovqin va kulgi</span>
+                <h2>Uyga Fotima ismli quyosh kirib kelganda</h2>
+                <p><span class="drop">B</span>irdan eshik baland va quvnoq taqillatildi - bunday qilib faqat quvonchdan sabri chidamaydiganlar taqillatadi. Bostirmada yugurib kelganidan sochlari tarqalib ketgan, lablarida esa quloqlarigacha yoyilgan tabassum bilan Fotima turardi. «Marjona xolajon! Sogʻindim!» - va bir soniyadan soʻng xona kulgi, qadam tovushlari va kichkina shoʻxliklarning jarangiga toʻlib ketdi.</p>
+                <p>Va aynan shu yerda Marjonaning yana bir qirrasi ochiladi. Kunning katta qismida u sokin, xayolchan, oʻz ichki dunyosiga chuqur choʻmgan boʻladi. Lekin sevgan odamlari yonida - xususan, jajji jiyani yonida - u butunlay boshqacha odamga aylanadi: erkin, yengil, bolalarcha quvnoq. Goʻyo sokinlik ortida yashiringan quyosh birdan bulutlar orasidan chiqib keladi.</p>
+                <p>Mushuk darhol qulogʻini dikkaytirdi - u bu ovozni yaxshi bilardi va bu energiyani juda yaxshi koʻrardi. Bir daqiqada uchovlari - Fotima, mushuk va Marjona - bir-birlarini quvlashardi: Fotima lentani silkitardi, mushuk esa haqiqiy ovchidek zavq bilan uning ortidan sakrardi, Marjona esa ularga qarab, oʻzini toʻxtatolmay kula boshladi.</p>
+                <p>Va mana shu - Marjonaning haqiqiy kulgisi. Kamdan-kam koʻrinadigan, ammo koʻrgan har bir kishini hayratda qoldiradigan kulgi. U kulganda, avval koʻzlari kichrayadi, keyin yonoqlarida chuqurchalar paydo boʻladi, va butun yuzi - odatda shunchalik jiddiy, oʻychan boʻlgan yuzi - birdan yosh bolanikidek yorishib ketadi. Bu tabassumni koʻrgan odam bir narsani darhol tushunadi: mana bu - haqiqiy, soxtasiz baxt.</p>
+                <p>Fotima buni sezadi - u xolasining kulishini yaxshi koʻradi, shuning uchun ham tez-tez uning oldiga yugurib keladi, shuning uchun ham har safar eshikni shunchalik baland taqillatadi. Bolalar kattalarning eng chin his-tuygʻularini his qilishadi, va Fotima yaxshi biladi: Marjonaning tabassumini uygʻotish - bu eng chiroyli sovgʻa.</p>
+                <p>Marjona qattiq kuldi, shunchalik qattiqki, koʻzlarida yosh chiqib ketdi - haqiqiy, baxtli yosh. U bunday paytlarda oʻzini toʻliq unutadi: hech qanday tashvish, hech qanday sokinlik yoʻq, faqat shu daqiqa, shu kulgi, shu ikki mavjudot - bir jiyan va bir mushuk - uni shunchalar sevib, shunchalar baxtli qilishlari qoladi.</p>
+                <p>Shu payt kvartira kulgi, yumshoq panjalar va jarangdor bolakay ovozidan iborat butun bir olamga aylandi. Marjonaning tabassumi esa - xuddi quyosh nuri kabi - xonaning har bir burchagiga tarqaldi. Uni koʻrgan har bir kishi bir narsani his qiladi: bu qiz sokin boʻlishi mumkin, lekin uning yuragi - issiq, keng va mehrga toʻla.</p>
+                <p>Va bir narsa abadiy aniq boʻldi: haqiqiy baxt aynan shundan iborat - oddiy oqshomlar, yonida sevimli odamlar, koʻzlarni yumib qoʻyadigan chin kulgi va oyoq ostida oʻralashib yuruvchi mushukdan. Marjona, sening tabassuming - bu dunyodagi eng chiroyli narsalardan biri. Va u qanchalik kam koʻrinsa, shunchalik qadrli.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCENE 3 - Final -->
+    <section class="scene" id="scene-final">
+        <div class="scene-inner">
+            <span class="eyebrow">va nihoyat</span>
+            <h1 class="title">Shunday oqshomlar<br><em>koʻproq</em> boʻlsin</h1>
+            <div class="hearts">🌸 🐾 💛</div>
+            <p class="signature"></p>
+            <button class="replay-btn" id="replayBtn">Yana bir bor koʻrish</button>
+        </div>
+    </section>
+
+    <button class="nav-arrow prev" id="prevBtn" aria-label="Orqaga">←</button>
+    <button class="nav-arrow next" id="nextBtn" aria-label="Oldinga">→</button>
+    <div class="dots" id="dots">
+        <span class="dot" data-i="0"></span>
+        <span class="dot" data-i="1"></span>
+        <span class="dot" data-i="2"></span>
+        <span class="dot" data-i="3"></span>
     </div>
-    <div class="story-text">
-      <span class="eyebrow">birinchi bob · sokin oqshom</span>
-      <h2>Sen bilan birga oʻylaydigan yorugʻlik</h2>
-      <p><span class="drop">M</span>arjona sokin qiz. Bu haqiqat. Lekin sokinlik - boʻshliq degani emas. Uning sukunati ortida butun bir olam yashiringan: chuqur fikrlar, nozik tuygʻular, hech kimga koʻrsatilmaydigan mehr. Koʻpchilik shovqin bilan diqqatni oʻziga tortadi, Marjona esa - aksincha. U jim turadi, lekin uning jimligida shunday chuqurlik borki, uni sezgan odam bir umr esidan chiqarolmaydi.</p>
-      <p>Mana shu oqshom ham xuddi shunday edi. Deraza ortida kun soʻnib borardi, xona esa faqat oqshomga xos boʻlgan ajib qumral yorugʻlikka toʻlgan edi - issiq, erinchoq va bir oz sehrli. Marjona oyoqlarini tortib oʻtirgancha, tizzasida mudragan mushukni sekin siypalardi. Mushuk shu qadar ishonch bilan xurillardiki, goʻyo aniq bilardi: hozir unga aynan shu narsa kerak - hech kim gapirmasin, hech kim shoshiltirmasin, faqat shu jimlik, shu iliqlik.</p>
-      <p>Marjona koʻp gapirmaydi. Lekin har bir soʻzi - oʻylab aytilgan, har bir jimligi - mazmunga toʻla. Odamlar buni sezishadi: uning yonida bemalol boʻlish mumkin, chunki u hech qachon ortiqcha baholamaydi, hech qachon shoshiltirmaydi. U shunchaki tinglaydi, tushunadi, va oʻz vaqtida - juda kam, ammo juda toʻgʻri soʻzlar aytadi.</p>
-      <p>U turli narsalar haqida oʻylardi. Juda tez oʻtib ketgan kunlar haqida. Endigina ushalayotgan orzular haqida. Sevgan odamlari haqida - ularning har biri uning yuragida alohida burchakka ega. U hech kimga bu haqda baland ovozda gapirmaydi, lekin har bir kishi haqida qanchalar chuqur oʻylashini faqat u oʻzi biladi.</p>
-      <p>Va shu fikrlar orasida sekin-asta bir xotirjamlik keldi: hammasi toʻgʻri ketyapti. Hozir hamma narsa aniq boʻlmasa ham - hayot baribir goʻzal bir surat chizmoqda, faqat uni hali toʻliq koʻrsatmagan, xolos. Sokin odamlar koʻpincha eng chuqur ishonchga ega boʻlishadi - ular shov-shuvsiz, lekin mustahkam ishonishadi: yaxshilik albatta keladi.</p>
-      <p>Mushuk bir koʻzini ochib, unga oʻsha mushukona donolik bilan qaradi - goʻyo shunday dedi: <em>«Jilmayib qoʻy. Sen oʻzing oʻylagandan ham yaxshi uddalayapsan»</em>. Va aynan shu daqiqada sodir boʻldi - sekin, tabiiy, hech kim uni bunga majburlamagan holda: Marjonaning lablarida tabassum paydo boʻldi.</p>
-      <p>Bu shunchaki tabassum emas edi. Buni koʻrgan har bir kishi biladi - Marjonaning tabassumi kamdan-kam, ammo juda chin. U kulganda, koʻzlari ham kulib turadi, va butun xona birdan yorishib ketadi, goʻyo quyosh xiralashgan oqshomni yana bir bor yoritib yuborganday. Odamlar bu tabassumni koʻrish uchun kutishga arziydi, deyishadi - chunki u tez-tez namoyon boʻlmaydi, lekin paydo boʻlganda hammasini unutdirib qoʻyadi.</p>
-      <p>Va shu oqshom ham - sokin, iliq, mushuk bilan toʻla - Marjonaning yuzida oʻsha noyob, haqiqiy tabassumni yana bir bor uygʻotdi. Chunki ba'zan baxt uchun katta voqealar shart emas. Faqat sevimli mushuk, mayin yorugʻlik va oʻz-oʻzi bilan tinch qolish kifoya.</p>
-    </div>
-  </div>
-</section>
 
-<!-- SCENE 2 -->
-<section class="scene" id="scene-two">
-  <div class="scene-inner">
-    <div class="frame-wrap">
-      <div class="frame-glow"></div>
-      <div class="frame"><img src="2.png" alt="Marjona, Fotima va mushuk oʻynashmoqda"></div>
-    </div>
-    <div class="story-text">
-      <span class="eyebrow">ikkinchi bob · shovqin va kulgi</span>
-      <h2>Uyga Fotima ismli quyosh kirib kelganda</h2>
-      <p><span class="drop">B</span>irdan eshik baland va quvnoq taqillatildi - bunday qilib faqat quvonchdan sabri chidamaydiganlar taqillatadi. Bostirmada yugurib kelganidan sochlari tarqalib ketgan, lablarida esa quloqlarigacha yoyilgan tabassum bilan Fotima turardi. «Marjona xolajon! Sogʻindim!» - va bir soniyadan soʻng xona kulgi, qadam tovushlari va kichkina shoʻxliklarning jarangiga toʻlib ketdi.</p>
-      <p>Va aynan shu yerda Marjonaning yana bir qirrasi ochiladi. Kunning katta qismida u sokin, xayolchan, oʻz ichki dunyosiga chuqur cho'mgan boʻladi. Lekin sevgan odamlari yonida - xususan, jajji jiyani yonida - u butunlay boshqacha odamga aylanadi: erkin, yengil, bolalarcha quvnoq. Goʻyo sokinlik ortida yashiringan quyosh birdan bulutlar orasidan chiqib keladi.</p>
-      <p>Mushuk darhol qulogʻini dikkaytirdi - u bu ovozni yaxshi bilardi va bu energiyani juda yaxshi koʻrardi. Bir daqiqada uchovlari - Fotima, mushuk va Marjona - bir-birlarini quvlashardi: Fotima lentani silkitardi, mushuk esa haqiqiy ovchidek zavq bilan uning ortidan sakrardi, Marjona esa ularga qarab, oʻzini toʻxtatolmay kula boshladi.</p>
-      <p>Va mana shu - Marjonaning haqiqiy kulgisi. Kamdan-kam koʻrinadigan, ammo koʻrgan har bir kishini hayratda qoldiradigan kulgi. U kulganda, avval koʻzlari kichrayadi, keyin yonoqlarida chuqurchalar paydo boʻladi, va butun yuzi - odatda shunchalik jiddiy, oʻychan boʻlgan yuzi - birdan yosh bolanikidek yorishib ketadi. Bu tabassumni koʻrgan odam bir narsani darhol tushunadi: mana bu - haqiqiy, soxtasiz baxt.</p>
-      <p>Fotima buni sezadi - u xolasining kulishini yaxshi koʻradi, shuning uchun ham tez-tez uning oldiga yugurib keladi, shuning uchun ham har safar eshikni shunchalik baland taqillatadi. Bolalar kattalarning eng chin his-tuygʻularini his qilishadi, va Fotima yaxshi biladi: Marjonaning tabassumini uygʻotish - bu eng chiroyli sovgʻa.</p>
-      <p>Marjona qattiq kuldi, shunchalik qattiqki, koʻzlarida yosh chiqib ketdi - haqiqiy, baxtli yosh. U bunday paytlarda oʻzini toʻliq unutadi: hech qanday tashvish, hech qanday sokinlik yoʻq, faqat shu daqiqa, shu kulgi, shu ikki mavjudot - bir jiyan va bir mushuk - uni shunchalar sevib, shunchalar baxtli qilishlari qoladi.</p>
-      <p>Shu payt kvartira kulgi, yumshoq panjalar va jarangdor bolakay ovozidan iborat butun bir olamga aylandi. Marjonaning tabassumi esa - xuddi quyosh nuri kabi - xonaning har bir burchagiga tarqaldi. Uni koʻrgan har bir kishi bir narsani his qiladi: bu qiz sokin boʻlishi mumkin, lekin uning yuragi - issiq, keng va mehrga toʻla.</p>
-      <p>Va bir narsa abadiy aniq boʻldi: haqiqiy baxt aynan shundan iborat - oddiy oqshomlar, yonida sevimli odamlar, koʻzlarni yumib qoʻyadigan chin kulgi va oyoq ostida oʻralashib yuruvchi mushukdan. Marjona, sening tabassuming - bu dunyodagi eng chiroyli narsalardan biri. Va u qanchalik kam koʻrinsa, shunchalik qadrli.</p>
-    </div>
-  </div>
-</section>
+    <script>
+        const scenes = [...document.querySelectorAll('.scene')];
+        const dots = [...document.querySelectorAll('.dot')];
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const dotsWrap = document.getElementById('dots');
+        const music = document.getElementById('bgMusic');
+        let current = 0;
+        let started = false;
 
-<!-- SCENE 3 - Final -->
-<section class="scene" id="scene-final">
-  <div class="scene-inner">
-    <span class="eyebrow">va nihoyat</span>
-    <h1 class="title">Shunday oqshomlar<br><em>koʻproq</em> boʻlsin</h1>
-        <div class="hearts">🌸 🐾 💛</div>
-    <p class="signature"></p>
-    <button class="replay-btn" id="replayBtn">Yana bir bor koʻrish</button>
-  </div>
-</section>
+        function goTo(i) {
+            if (i < 0 || i >= scenes.length) return;
+            scenes[current].classList.remove('active');
+            current = i;
+            scenes[current].classList.add('active');
+            dots.forEach((d, idx) => d.classList.toggle('on', idx === current));
+            prevBtn.classList.toggle('show', started && current > 0);
+            nextBtn.classList.toggle('show', started && current < scenes.length - 1);
+            dotsWrap.classList.toggle('show', started);
 
-<button class="nav-arrow prev" id="prevBtn" aria-label="Orqaga">←</button>
-<button class="nav-arrow next" id="nextBtn" aria-label="Oldinga">→</button>
-<div class="dots" id="dots">
-  <span class="dot" data-i="0"></span>
-  <span class="dot" data-i="1"></span>
-  <span class="dot" data-i="2"></span>
-  <span class="dot" data-i="3"></span>
-</div>
+            // Scroll to top of story text on mobile
+            const storyText = scenes[current].querySelector('.story-text');
+            if (storyText) {
+                storyText.scrollTop = 0;
+            }
+        }
 
-<script>
-  const scenes = [...document.querySelectorAll('.scene')];
-  const dots = [...document.querySelectorAll('.dot')];
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  const dotsWrap = document.getElementById('dots');
-  const music = document.getElementById('bgMusic');
-  let current = 0;
-  let started = false;
+        function startExperience() {
+            started = true;
+            music.volume = 0.75;
+            music.play().catch(() => {});
+            goTo(1);
+        }
 
-  function goTo(i){
-    if(i < 0 || i >= scenes.length) return;
-    scenes[current].classList.remove('active');
-    current = i;
-    scenes[current].classList.add('active');
-    dots.forEach((d,idx)=> d.classList.toggle('on', idx===current));
-    prevBtn.classList.toggle('show', started && current > 0);
-    nextBtn.classList.toggle('show', started && current < scenes.length - 1);
-    dotsWrap.classList.toggle('show', started);
-  }
+        document.getElementById('openBtn').addEventListener('click', startExperience);
+        document.getElementById('replayBtn').addEventListener('click', () => goTo(1));
 
-  function startExperience(){
-    started = true;
-    music.volume = 0.75;
-    music.play().catch(()=>{ /* brauzer avtoplayni foydalanuvchi harakatigacha bloklashi mumkin - lekin tugma bosilishi bunga ruxsat beradi */ });
-    goTo(1);
-  }
+        prevBtn.addEventListener('click', () => goTo(current - 1));
+        nextBtn.addEventListener('click', () => goTo(current + 1));
 
-  document.getElementById('openBtn').addEventListener('click', startExperience);
-  document.getElementById('replayBtn').addEventListener('click', ()=> goTo(1));
+        dots.forEach(d => d.addEventListener('click', () => {
+            if (!started) return;
+            goTo(parseInt(d.dataset.i));
+        }));
 
-  prevBtn.addEventListener('click', ()=> goTo(current - 1));
-  nextBtn.addEventListener('click', ()=> goTo(current + 1));
+        document.addEventListener('keydown', (e) => {
+            if (!started) return;
+            if (e.key === 'ArrowRight') goTo(current + 1);
+            if (e.key === 'ArrowLeft') goTo(current - 1);
+        });
 
-  dots.forEach(d => d.addEventListener('click', ()=>{
-    if(!started) return;
-    goTo(parseInt(d.dataset.i));
-  }));
+        // Touch swipe
+        let touchX = null;
+        let touchY = null;
 
-  document.addEventListener('keydown', (e)=>{
-    if(!started) return;
-    if(e.key === 'ArrowRight') goTo(current + 1);
-    if(e.key === 'ArrowLeft') goTo(current - 1);
-  });
+        document.addEventListener('touchstart', e => {
+            touchX = e.touches[0].clientX;
+            touchY = e.touches[0].clientY;
+        }, { passive: true });
 
-  // telefonda svayp uchun oddiy qoʻllab-quvvatlash
-  let touchX = null;
-  document.addEventListener('touchstart', e => touchX = e.touches[0].clientX);
-  document.addEventListener('touchend', e => {
-    if(touchX === null || !started) return;
-    const dx = e.changedTouches[0].clientX - touchX;
-    if(Math.abs(dx) > 50){ dx < 0 ? goTo(current+1) : goTo(current-1); }
-    touchX = null;
-  });
+        document.addEventListener('touchend', e => {
+            if (touchX === null || !started) return;
+            const dx = e.changedTouches[0].clientX - touchX;
+            const dy = e.changedTouches[0].clientY - touchY;
+            // Only trigger if horizontal swipe is more prominent than vertical
+            if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+                dx < 0 ? goTo(current + 1) : goTo(current - 1);
+            }
+            touchX = null;
+            touchY = null;
+        }, { passive: true });
 
-  // quyosh nurida suzuvchi zarrachalar
-  function spawnParticle(){
-    const p = document.createElement('div');
-    p.className = 'particle';
-    const size = 4 + Math.random()*8;
-    p.style.width = size + 'px';
-    p.style.height = size + 'px';
-    p.style.left = Math.random()*100 + 'vw';
-    p.style.bottom = '-20px';
-    const duration = 10 + Math.random()*10;
-    p.style.animationDuration = duration + 's';
-    document.body.appendChild(p);
-    setTimeout(()=> p.remove(), duration*1000);
-  }
-  setInterval(spawnParticle, 900);
-  for(let i=0;i<6;i++) setTimeout(spawnParticle, i*300);
-</script>
+        // Particles
+        function spawnParticle() {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            const size = 4 + Math.random() * 8;
+            p.style.width = size + 'px';
+            p.style.height = size + 'px';
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.bottom = '-20px';
+            const duration = 10 + Math.random() * 10;
+            p.style.animationDuration = duration + 's';
+            document.body.appendChild(p);
+            setTimeout(() => p.remove(), duration * 1000);
+        }
+        setInterval(spawnParticle, 900);
+        for (let i = 0; i < 6; i++) setTimeout(spawnParticle, i * 300);
+    </script>
 
 </body>
 </html>
